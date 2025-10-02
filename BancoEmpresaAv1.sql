@@ -1,0 +1,13 @@
+select idEmprg, nomEmprg, numCPFEmprg from Empregado where extract(year from datAdmsEmprg) > 2017;
+select idEmprg, nomEmprg, idDepto from Empregado where (extract(year from datAdmsEmprg) between 2015 and 2021) and valSalEmprg > 3800;
+select idEmprg, nomDepend, datNascDepend from Dependente where timestampdiff(year,datNascDepend,current_date()) > 10;
+select idEmprg, idDepend, nomDepend from Dependente where (extract(year from datNascDepend) not between 2010 and 2013) and indSexoDepend ='M';
+select idLocal, dscLocal from Localizacao where ((dsclocal like '%p%') or (dsclocal like '%q%'));
+select idLocal, dscLocal from Localizacao where dsclocal REGEXP '[p-q]';
+select idEmprg, idDepend, nomDepend from Dependente where (nomDepend REGEXP '^[AEIOU]') and (idDepend BETWEEN 1 AND 3) and (indSexoDepend ='F');
+select nomDepend, datNascDepend from Dependente where extract(month from datNascDepend) % 2 = 0 and extract(year from datNascDepend) % 2 <> 0;
+select idProj, idEmprProj, qtdHorasEmprProj from EmprProjeto where qtdHorasEmprProj > 50 order by qtdHorasEmprProj desc;
+select * from Departamento where idGerEmprg is not null;
+select idEmprg, nomEmprg, datAdmsEmprg from Empregado where idSupervEmprg is null order by datAdmsEmprg desc;
+select idDepProj from DeptoProjeto where idProj in (10, 40, 50);
+select nomDepend, datNascDepend, indSexoDepend from Dependente where (nomDepend like '_a%');
